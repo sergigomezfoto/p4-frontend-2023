@@ -1,19 +1,22 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
-import { createApi } from "unsplash-js";
-import { Photo } from "../components/Photo";
+import { HomePhoto } from "../components/HomePhoto/HomePhoto";
+import Loading from "../components/Loading/Loading";
+import ErrorPage from '../components/ErrorPage/ErrorPage';
+import styles from './Home.module.css';
+import { useApi } from "../context/ApiContext";
 
+interface HomeProps {
 
-const api = createApi({
-    accessKey: import.meta.env.VITE_UNSPLASH_ACCESS_KEY,
-});
+}
 
-const Home: FunctionComponent = () => {
+const Home: FC<HomeProps> = () => {
+    const api = useApi();
     const [data, setPhotosResponse] = useState<any | null>(null);
-
+    
     useEffect(() => {
         api.search
-            .getPhotos({ query: "mashrooms", orientation: "landscape", perPage: 30 })
+            .getPhotos({ query: "barcelona", orientation: "landscape", perPage: 30 })
             .then(result => {
                 setPhotosResponse(result);
                 console.log(result);
@@ -24,23 +27,19 @@ const Home: FunctionComponent = () => {
     }, []);
 
     if (data === null) {
-        return <div>Loading...</div>;
+        return <Loading/>;
     } else if (data.errors) {
-        return (
-            <div>
-                <div>{data.errors[0]}</div>
-            </div>
+        return ( 
+                <ErrorPage error={data.errors[0]}/>
         );
     } else {
         return (
-            <div >
-                <ul >
-                    {data.response.results.map((photo: Photo) => (
-                        <li key={photo.id} >
-                            <Photo photo={photo} />
-                        </li>
+            <div className={styles.wrapper}>          
+                    {data.response.results.map((photo: HomePhoto) => (
+                        <div key={photo.id} >
+                            <HomePhoto photo={photo} />
+                        </div>
                     ))}
-                </ul>
             </div>
         );
     }

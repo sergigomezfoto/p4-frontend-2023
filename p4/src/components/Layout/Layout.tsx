@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import "./style.css"
+import styles from './Layout.module.scss';
 import { Outlet } from "react-router-dom";
 
 interface LayoutProps {
@@ -9,7 +9,7 @@ interface LayoutProps {
 
 const Layout: FunctionComponent<LayoutProps> = () => {
     return ( 
-    <div className="layoutsr">
+    <div className={styles.layoutsr}>
         <Outlet/>
     </div> );
 }
