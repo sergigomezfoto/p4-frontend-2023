@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import styles from './HomePhoto.module.css';
 
-export type HomePhoto = {
-    id: number;
+export type PhotoType = {
+    id: string;
     width: number;
     height: number;
     urls: { large: string; regular: string; raw: string; small: string };
@@ -13,14 +13,20 @@ export type HomePhoto = {
     };
 };
 
-export const HomePhoto: React.FC<{ photo: HomePhoto }> = ({ photo }) => {
-    const { id, urls } = photo;
+export const HomePhoto: React.FC<{ photo: PhotoType }> = ({ photo }) => {
+    const { urls } = photo;
+    const navigate = useNavigate();
+
+    const handleClick = (photo: PhotoType) => {
+        navigate(`/${photo.id}`, { state: { photo } });
+    }
     return (
-        <Link to={`/${id}`} >
+
             <div className={styles.card}
+                onClick={() => handleClick(photo)}
                 style={{ backgroundImage: `url(${urls.small})` }}
             >
             </div>
-        </Link>
+    
     );
 };

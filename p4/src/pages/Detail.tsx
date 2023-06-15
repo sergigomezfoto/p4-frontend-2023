@@ -1,26 +1,51 @@
 import { FC, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import { useApi } from "../context/ApiContext";
+import Loading from "../components/Loading/Loading";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import { PhotoType } from '../components/HomePhoto/HomePhoto';
+
+import styles from './Detail.module.css';
+
 
 const Detail: FC = () => {
-    const [message, setMessage] = useState<string>('')
-    const { id } = useParams();
 
+    const [data, setPhotoResponse] = useState<any | null>(null);
+    const { id } = useParams();
+    const location = useLocation();
+    const photo: PhotoType = location.state?.photo;
+    const api = useApi();
 
     useEffect(() => {
-        console.log(id);       
-        if (id) {
-            setMessage(`The number is ${id}`);
+        if (!photo) {
+            if (id) {
+                console.log('no photo');
+                api.photos.get({ photoId: id })
+                    .then(result => {
+                        setPhotoResponse(result.response)
+                    })
+                    .catch(() => {
+                        console.log("error!");
+                    });
+            }
         } else {
-            setMessage('No number');
+            setPhotoResponse(photo)
         }
-    }, [])
+    }, [id, photo]);
 
-    return (
-        <div>
-            <h1>El detall de la foto:</h1>
-            <p>{message}</p>
-        </div>
-    );
+    if (data === null) {
+        return <Loading />;
+    } else if (data.errors) {
+        return (
+            <ErrorPage error={data.errors[0]} />
+        );
+    } else {
+        return (
+            <div className={styles.wrapper}>
+                <img src={data.urls.regular} alt="hola" />
+            </div>
+        );
+    }
 }
 
 
