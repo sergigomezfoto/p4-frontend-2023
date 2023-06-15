@@ -13,14 +13,14 @@ const App: FunctionComponent<AppProps> = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about"  >
+          <Route path=":number" element={<About/>}/>
+        {/* <Route path="about"  >
+          <Route index element={<About/>}/>
+        </Route> */}
+        {/* <Route path="layout" element={<Layout/>} >
           <Route index element={<About/>}/>
           <Route path=":number" element={<About/>}/>
-        </Route>
-        <Route path="layout" element={<Layout/>} >
-          <Route index element={<About/>}/>
-          <Route path=":number" element={<About/>}/>
-        </Route>
+        </Route> */}
       </Routes>
 
     </BrowserRouter>
