@@ -1,15 +1,15 @@
 import { FC, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useApi } from "../context/ApiContext";
 import Loading from "../components/Loading/Loading";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
-import { PhotoType } from '../components/HomePhoto/HomePhoto';
+import { PhotoType } from "../types/Photo";
+
 
 import styles from './Detail.module.css';
 
 
 const Detail: FC = () => {
-
     const [data, setPhotoResponse] = useState<any | null>(null);
     const { id } = useParams();
     const location = useLocation();
@@ -40,10 +40,14 @@ const Detail: FC = () => {
             <ErrorPage error={data.errors[0]} />
         );
     } else {
-        return (
+        return (<>
+            <Link to="/" className={styles.back}>
+            hola
+            </Link>
             <div className={styles.wrapper}>
                 <img src={data.urls.regular} alt="hola" />
             </div>
+        </>
         );
     }
 }
