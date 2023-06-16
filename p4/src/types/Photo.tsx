@@ -13,4 +13,5 @@ export type PhotoType = {
     };
     alt_description: string | null;
     description: string | null;
+
 };

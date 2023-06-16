@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
-import { HomePhoto } from "../components/HomePhoto/HomePhoto";
+import {  SmallPhoto } from "../components/SmallPhoto/SmallPhoto";
 import Loading from "../components/Loading/Loading";
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import styles from './Home.module.css';
@@ -56,9 +56,9 @@ const Home: FC<HomeProps> = () => {
         return (
             <div className={styles.wrapper}>
                 {data.response.results.map((photo: PhotoType) => (
-                    <div key={photo.id} >
-                        <HomePhoto photo={photo} />
-                    </div>
+                    // <div key={photo.id} className={styles.card}>
+                        <SmallPhoto photo={photo} key={photo.id} />
+                    // </div>
                 ))}
             </div>
         );

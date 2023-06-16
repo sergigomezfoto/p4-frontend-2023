@@ -1,0 +1,63 @@
+.card {
+  flex-basis: calc(100% / 5 - 20px);
+  max-width: 267px;
+  min-width: 267px;
+  height: 267px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  position: relative;
+  clip-path: polygon(14% 0, 86% 0, 100% 14%, 100% 86%, 86% 100%, 14% 100%, 0 86%, 0 14%);
+  filter: grayscale(100%);
+  transition: filter 3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transition: filter 0.3s ease;
+  filter: none;
+}
+.card:hover .user {
+  transform: translateY(0); /* Mueve .user hacia arriba a su posición original en el hover */
+}
+@media (max-width: 1920px) {
+  .card {
+    flex-basis: calc(100% / 4 - 20px);
+  }
+}
+
+@media (max-width: 1440px) {
+  .card {
+    flex-basis: calc(100% / 3 - 20px);
+  }
+}
+
+@media (max-width: 960px) {
+  .card {
+    flex-basis: calc(100% / 2 - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex-basis: calc(100% - 20px);
+  }
+}
+
+/*quireo una classe user que tenga un texto centrado vertical y horizontalmente y que tenga un fondo semitransparente negro*/
+.user {
+  width: 100%;
+  height: 36px;
+  background-color: rgb(95, 95, 95);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  position: absolute; /* Se posiciona de manera absoluta respecto al elemento padre posicionado */
+  bottom: 0; /* Alinea el borde inferior de .user con el borde inferior de .card */
+  transform: translateY(100%); /* Mueve .user hacia abajo, fuera de la vista */
+  transition: transform 0.3s ease; /* Transición para el movimiento */
+
+}
