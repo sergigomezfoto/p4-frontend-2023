@@ -7,7 +7,9 @@ import { PhotoType } from "../types/Photo";
 
 
 import styles from './Detail.module.css';
-import { getReadableTextColor } from "../helpers/complementaryColor";
+
+import AttrImage from '../components/AttrImage/AttrImage';
+import ImageWithSocial from "../components/ImageWithSocial/ImageWithSocial";
 
 
 const Detail: FC = () => {
@@ -40,24 +42,18 @@ const Detail: FC = () => {
             <ErrorPage error={data.errors[0]} />
         );
     } else {
-        const readableTextColor = getReadableTextColor(data.color);
+        const { urls, color, alt_description, description } = data;
         return (<>
             <Link to="/" className={styles.back}>
                 Back
             </Link>
             <div className={styles.wrapper}>
-                <div className={styles.imageContainer}>
-                    <img src={data.urls.regular} alt={data.alt_description ? data.alt_description : 'image'} className={styles.image} />
-                    <div className={styles.content}>
-                        {data.alt_description && <p className={styles.description}><span>Alt description: </span>{data.alt_description}</p>}
-                        {data.description && <p className={styles.description}><span>Description: </span>{data.description}</p>}
-                        <div className={styles.stufContainer}>
-                            {data.color && <div className={styles.color} style={{ backgroundColor: data.color, color: readableTextColor }}>{data.color}</div>}
-                            {data.color && <div className={styles.color} style={{ backgroundColor: data.color, color: readableTextColor }}>{data.color}</div>}
-                        </div>
-                    </div>
+                <div className={styles.container}>
+                    <ImageWithSocial urls={urls} alt_description={alt_description} />
+                    <AttrImage color={color} urls={urls} alt_description={alt_description} description={description} />
                 </div>
             </div>
+
         </>
         );
     }

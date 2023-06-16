@@ -6,7 +6,7 @@ import ErrorPage from '../components/ErrorPage/ErrorPage';
 import styles from './Home.module.css';
 import { useApi } from "../context/ApiContext";
 import { PhotoType } from "../types/Photo";
-import HomeTitle from '../components/HomeTitle/HomeTitle';
+import BigTitle from '../components/BigTitle/BigTitle';
 
 
 interface HomeProps {
@@ -57,17 +57,16 @@ const Home: FC<HomeProps> = () => {
         );
     } else {
         return (<>
-            <HomeTitle />
+            <BigTitle title="BCN"/>
             <div className={`${styles.wrapper} ${styles['custom-cursor']}`} >
                 {data.response.results.map((photo: PhotoType) => (
-                    // <div key={photo.id} className={styles.card}>
                     <SmallPhoto photo={photo} key={photo.id} />
-                    // </div>
                 ))}
             </div>
         </>
         );
     }
 }
+
 
 export default Home;

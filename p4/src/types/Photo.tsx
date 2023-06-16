@@ -2,7 +2,7 @@ export type PhotoType = {
     id: string;
     width: number;
     height: number;
-    urls: { large: string; regular: string; raw: string; small: string };
+    urls: { full: string; regular: string; raw: string; small: string ;thumb: string};
     color: string | null;
     user: {
         first_name: string;
