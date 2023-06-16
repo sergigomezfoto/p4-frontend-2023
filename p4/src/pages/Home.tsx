@@ -1,5 +1,5 @@
-import { FC, useEffect, useRef, useState } from "react";
-// import { Link, useNavigate } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
+
 import { SmallPhoto } from "../components/SmallPhoto/SmallPhoto";
 import Loading from "../components/Loading/Loading";
 import ErrorPage from '../components/ErrorPage/ErrorPage';
@@ -7,7 +7,7 @@ import styles from './Home.module.css';
 import { useApi } from "../context/ApiContext";
 import { PhotoType } from "../types/Photo";
 import HomeTitle from '../components/HomeTitle/HomeTitle';
-// import '../common_css/common_css.css'
+
 
 interface HomeProps {
 
@@ -18,7 +18,7 @@ const Home: FC<HomeProps> = () => {
     const [data, setPhotosResponse] = useState<any | null>(null);
 
 
-    useEffect(() => {       
+    useEffect(() => {
         const cachedData = sessionStorage.getItem("apiData");
         if (cachedData) {
             setPhotosResponse(JSON.parse(cachedData));
