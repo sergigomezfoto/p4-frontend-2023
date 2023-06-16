@@ -1,4 +1,4 @@
-.wrapper{
+.home_wrapper{
     display: flex;
     flex-wrap: wrap;
     align-items: center; /* Centra verticalmente los elementos */
@@ -7,6 +7,3 @@
     width: 100%;
     gap: 30px;
 }
-.custom-cursor {
-    cursor: url(../assets/car.png) 25 12, auto;
-  }

@@ -1,11 +1,13 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
-import {  SmallPhoto } from "../components/SmallPhoto/SmallPhoto";
+import { SmallPhoto } from "../components/SmallPhoto/SmallPhoto";
 import Loading from "../components/Loading/Loading";
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import styles from './Home.module.css';
 import { useApi } from "../context/ApiContext";
 import { PhotoType } from "../types/Photo";
+import HomeTitle from '../components/HomeTitle/HomeTitle';
+// import '../common_css/common_css.css'
 
 interface HomeProps {
 
@@ -14,8 +16,9 @@ interface HomeProps {
 const Home: FC<HomeProps> = () => {
     const api = useApi();
     const [data, setPhotosResponse] = useState<any | null>(null);
-   
-    useEffect(() => {
+
+
+    useEffect(() => {       
         const cachedData = sessionStorage.getItem("apiData");
         if (cachedData) {
             setPhotosResponse(JSON.parse(cachedData));
@@ -30,10 +33,10 @@ const Home: FC<HomeProps> = () => {
                 })
                 .catch(() => {
                     console.log("error!");
-                });         
+                });
         }
     }, []);
-   
+
     const handleBeforeUnload = () => {
         sessionStorage.removeItem("apiData");
         localStorage.removeItem("apiData");
@@ -53,14 +56,16 @@ const Home: FC<HomeProps> = () => {
             <ErrorPage error={data.errors[0]} />
         );
     } else {
-        return (
-            <div className={styles.wrapper}>
+        return (<>
+            <HomeTitle />
+            <div className={`${styles.wrapper} ${styles['custom-cursor']}`} >
                 {data.response.results.map((photo: PhotoType) => (
                     // <div key={photo.id} className={styles.card}>
-                        <SmallPhoto photo={photo} key={photo.id} />
+                    <SmallPhoto photo={photo} key={photo.id} />
                     // </div>
                 ))}
             </div>
+        </>
         );
     }
 }

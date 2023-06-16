@@ -10,12 +10,12 @@
   position: relative;
   clip-path: polygon(14% 0, 86% 0, 100% 14%, 100% 86%, 86% 100%, 14% 100%, 0 86%, 0 14%);
   filter: grayscale(100%);
-  transition: filter 3s ease;
+  transition: filter 12s ease;
   cursor: pointer;
 }
 
 .card:hover {
-  transition: filter 0.3s ease;
+  transition: filter 0.1s ease;
   filter: none;
 }
 .card:hover .user {
