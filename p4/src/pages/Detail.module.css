@@ -17,3 +17,13 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+.back, .back:visited, .back:active, .back:hover{
+  font-variant: normal;
+  color: #fff;
+  text-decoration: none;
+
+}
+  .back:hover{  
+    font-style: normal;
+      text-decoration: underline;
+  }

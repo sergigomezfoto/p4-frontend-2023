@@ -9,6 +9,7 @@ import styles from './Detail.module.css';
 import AttrImage from '../components/AttrImage/AttrImage';
 import ImageWithSocial from "../components/ImageWithSocial/ImageWithSocial";
 import UserProfile from "../components/UserProfile/UserProfile";
+import BigTitle from "../components/BigTitle/BigTitle";
 
 
 const Detail: FC = () => {
@@ -41,25 +42,23 @@ const Detail: FC = () => {
             <ErrorPage error={data.errors[0]} />
         );
     } else {
-       const { urls, color, alt_description, description,user,likes} = data;
-        return (<>
-            <Link to="/" className={styles.back}>
-                Back
-            </Link>
-            <div className={styles.wrapper}>
-                <div className={styles.container}>
-                    <UserProfile user={user}/>
-                    <ImageWithSocial urls={urls} alt_description={alt_description} likes={likes}/>
-                    <AttrImage color={color} urls={urls} alt_description={alt_description} description={description} />
-                </div>
-            </div>
 
-        </>
+        const { urls, color, alt_description, description, user, likes } = data;
+        return (
+            <>
+                <Link to="/" className={styles.back}>
+                    <BigTitle title="<-BCN" />
+                </Link>
+                <div className={styles.wrapper}>
+                    <div className={styles.container}>
+                        <UserProfile user={user} />
+                        <ImageWithSocial urls={urls} alt_description={alt_description} likes={likes} />
+                        <AttrImage color={color} urls={urls} alt_description={alt_description} description={description} />
+                    </div>
+                </div>
+            </>
         );
     }
 }
-
-
-
 
 export default Detail;

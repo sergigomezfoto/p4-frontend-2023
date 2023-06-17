@@ -7,7 +7,6 @@ import { getReadableTextColor } from "../../helpers/complementaryColor";
 
 export const SmallPhoto: React.FC<{ photo: PhotoType }> = ({ photo }) => {
     const { urls,id,color,user } = photo;
-
     const navigate = useNavigate();
     const handleClick = (id:string) => {
         navigate(`/${id}`, { state: { photo } });

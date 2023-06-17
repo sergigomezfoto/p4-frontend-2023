@@ -10,9 +10,7 @@ const UserProfile: FC<UserProfileProps> = ({ user }) => {
 
 
     const { profile_image, username, name ,links} = user;
-    console.log(profile_image);
-    console.log(username);
-    console.log(name);
+
 
     return (
         <>
@@ -21,7 +19,7 @@ const UserProfile: FC<UserProfileProps> = ({ user }) => {
                 <div>
                     <div className={styles['profile-name']}>{name}</div>
                     <a className={styles['profile-username']} href={links.html}>
-                        @{user.username}
+                        @{username}
                     </a>
                 </div>
             </div>

@@ -1,9 +1,0 @@
-.home_wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center; /* Centra verticalmente los elementos */
-    justify-content: center; 
-    height: 100%;
-    width: 100%;
-    gap: 30px;
-}

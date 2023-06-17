@@ -16,8 +16,6 @@ interface HomeProps {
 const Home: FC<HomeProps> = () => {
     const api = useApi();
     const [data, setPhotosResponse] = useState<any | null>(null);
-
-
     useEffect(() => {
         const cachedData = sessionStorage.getItem("apiData");
         if (cachedData) {
@@ -56,14 +54,15 @@ const Home: FC<HomeProps> = () => {
             <ErrorPage error={data.errors[0]} />
         );
     } else {
-        return (<>
-            <BigTitle title="BCN"/>
-            <div className={`${styles.wrapper} ${styles['custom-cursor']}`} >
-                {data.response.results.map((photo: PhotoType) => (
-                    <SmallPhoto photo={photo} key={photo.id} />
-                ))}
-            </div>
-        </>
+        return (
+            <>
+                <BigTitle title="BCN" />
+                <div className={`${styles.wrapper} ${styles['custom-cursor']}`} >
+                    {data.response.results.map((photo: PhotoType) => (
+                        <SmallPhoto photo={photo} key={photo.id} />
+                    ))}
+                </div>
+            </>
         );
     }
 }
