@@ -41,7 +41,7 @@ const Detail: FC = () => {
             <ErrorPage error={data.errors[0]} />
         );
     } else {
-        const { urls, color, alt_description, description,user } = data;
+       const { urls, color, alt_description, description,user,likes} = data;
         return (<>
             <Link to="/" className={styles.back}>
                 Back
@@ -49,7 +49,7 @@ const Detail: FC = () => {
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     <UserProfile user={user}/>
-                    <ImageWithSocial urls={urls} alt_description={alt_description} />
+                    <ImageWithSocial urls={urls} alt_description={alt_description} likes={likes}/>
                     <AttrImage color={color} urls={urls} alt_description={alt_description} description={description} />
                 </div>
             </div>

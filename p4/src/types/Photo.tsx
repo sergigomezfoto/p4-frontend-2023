@@ -4,6 +4,7 @@ export type PhotoType = {
     height: number;
     urls: { full: string; regular: string; raw: string; small: string ;thumb: string};
     color: string | null;
+    likes: number;
     user: {
         first_name: string;
         last_name: string | null;
