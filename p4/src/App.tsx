@@ -12,7 +12,6 @@ const App: FunctionComponent = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-
           <Route path="/" element={<Home />} />
           <Route path=":id" element={<Detail />} />
         </Routes>
