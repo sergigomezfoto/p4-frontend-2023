@@ -1,3 +1,11 @@
+# Consulta
+
+Hi ha un problema que sempre que faig servir algún bundle em passa i és que tot funciona bé en el run dev però quan faig el build sempre tinc problemes, i no sé com sortir-me'n.
+En aquest cas quan faig el build i despres faig "npx vite preview", tot funciona perfecte, però si faig build i vaig directament a veure la carpeta build, no funciona res... suposo que deu ser una tontería, però és que sempre topo amb la mateixa pedra quan faig servir algún empaquetador.
+Si poguessis donar-li un cop d'ull, explicar-me una mica el que passa t'ho agrairía.
+
+
+
 # Frontend en Typescript usando React
 
 Se trata de hacer un _frontend_ usando React con Typescript. 
