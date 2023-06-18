@@ -7,6 +7,7 @@ import styles from './Home.module.css';
 import { useApi } from "../context/ApiContext";
 import { PhotoType } from "../types/Photo";
 import BigTitle from '../components/BigTitle/BigTitle';
+// import usePreloadImages from "../hooks/usePreloadImage";
 
 
 interface HomeProps {
@@ -27,13 +28,15 @@ const Home: FC<HomeProps> = () => {
                 .then(result => {
                     setPhotosResponse(result);
                     sessionStorage.setItem("apiData", JSON.stringify(result));
-                    console.log(result);
+                    console.log('api called');
                 })
                 .catch(() => {
                     console.log("error!");
                 });
         }
     }, []);
+    // const images = data.response.results.map((result: PhotoType) => result.urls.regular);
+    // usePreloadImages(images);
 
     const handleBeforeUnload = () => {
         sessionStorage.removeItem("apiData");
@@ -54,6 +57,8 @@ const Home: FC<HomeProps> = () => {
             <ErrorPage error={data.errors[0]} />
         );
     } else {
+
+        
         return (
             <>
                 <BigTitle title="BCN" />
