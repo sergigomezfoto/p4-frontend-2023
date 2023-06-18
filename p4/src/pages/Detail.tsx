@@ -34,7 +34,9 @@ const Detail: FC = () => {
             setPhotoResponse(photo)
         }
     }, [id, photo]);
-
+    useEffect(() => {
+        window.scrollTo(0, 0); // Restablecer la posición de desplazamiento a la parte superior de la página
+      }, []);
     if (data === null) {
         return <Loading />;
     } else if (data.errors) {

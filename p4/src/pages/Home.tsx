@@ -34,8 +34,7 @@ const Home: FC<HomeProps> = () => {
                 });
         }
     }, []);
-    // const images = data.response.results.map((result: PhotoType) => result.urls.regular);
-    // usePreloadImages(images);
+
     const handleBeforeUnload = () => {
         sessionStorage.removeItem("apiData");
         localStorage.removeItem("apiData");

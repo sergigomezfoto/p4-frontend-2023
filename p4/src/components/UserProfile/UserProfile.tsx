@@ -18,7 +18,7 @@ const UserProfile: FC<UserProfileProps> = ({ user }) => {
                 <img className={styles['profile-image']} src={profile_image.large} alt={name} />
                 <div>
                     <div className={styles['profile-name']}>{name}</div>
-                    <a className={styles['profile-username']} href={links.html}>
+                    <a className={styles['profile-username']} href={links.html} target="_blank">
                         @{username}
                     </a>
                 </div>
